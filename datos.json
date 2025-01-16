@@ -1,0 +1,32 @@
+{
+    "lenguasMaternas": ["Español", "Inglés", "Francés", "Alemán", "Italiano", "Chino", "Árabe", "Ruso"],
+    "idiomasConocidos": ["Español", "Inglés", "Francés", "Alemán", "Italiano", "Chino", "Árabe", "Ruso", "Portugués", "Japonés"],
+    "profesiones": ["Profesor", "Ingeniero", "Médico", "Abogado", "Comerciante", "Artista", "Estudiante", "Otro"],
+    "ciudadesDeNacimiento": ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "Málaga", "Granada", "Zaragoza"],
+    "paises": {
+      "España": {
+        "ciudades": {
+          "Madrid": ["Centro", "Salamanca", "Chamartín"],
+          "Barcelona": ["Gràcia", "Eixample", "Sants-Montjuïc"],
+          "Sevilla": ["Triana", "Nervión", "Macarena"],
+          "Valencia": ["Ciutat Vella", "El Carmen", "Ruzafa"]
+        }
+      },
+      "Francia": {
+        "ciudades": {
+          "París": ["Le Marais", "Montmartre", "La Défense"],
+          "Lyon": ["Presqu'île", "Croix-Rousse", "Part-Dieu"]
+        }
+      },
+      "Italia": {
+        "ciudades": {
+          "Roma": ["Trastevere", "Testaccio", "Esquilino"],
+          "Milán": ["Brera", "Navigli", "Porta Romana"]
+        }
+      }
+    },
+    "nivelesDeEstudio": ["Primaria", "Secundaria", "Bachillerato", "Universitario", "Posgrado", "Doctorado"],
+    "alergias": ["Polen", "Lácteos", "Frutos secos", "Mariscos", "Gluten", "Medicamentos"],
+    "nivelesDeEstudioSolicitados": ["Primaria", "Secundaria", "Bachillerato", "Universitario", "Posgrado", "Doctorado"]
+  }
+  

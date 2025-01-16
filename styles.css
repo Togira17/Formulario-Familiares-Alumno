@@ -1,0 +1,195 @@
+/* Variables CSS */
+:root {
+    --color-primary: #4A90E2;
+    --color-secondary: #50E3C2;
+    --color-error: #FF4D4D;
+    --color-success: #13CE66;
+    --color-text: #333333;
+    --color-background: #FFFFFF;
+    --color-input-bg: #F8F9FA;
+    --color-border: #E0E0E0;
+  }
+  
+  /* Estilos base */
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    padding: 2rem;
+  }
+  
+  /* Contenedor del formulario */
+  #studentRegistrationForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  /* Secciones */
+  .form-section {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+  
+  .form-section h2 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(74, 144, 226, 0.2);
+  }
+  
+  /* Grupos de formulario */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  
+  .form-group label[for]:not([for*="medicacion"]):not([for*="alergias"])::after {
+    content: " *";
+    color: var(--color-error);
+  }
+  
+  .form-group input[type="text"],
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-input-bg);
+    transition: all 0.2s ease;
+  }
+  
+  .form-group input[type="text"]:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    outline: none;
+  }
+  
+  .form-group select[multiple] {
+    height: auto;
+    min-height: 120px;
+  }
+  
+  /* Familiares */
+  .familiar-entry {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 8px;
+    background: rgba(248, 249, 250, 0.5);
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .familiar-entry:hover {
+    border-color: var(--color-primary);
+  }
+  
+  /* Botones */
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  #add-familiar {
+    background-color: rgba(80, 227, 194, 0.1);
+    color: #2a7a68;
+    margin: 1rem 0;
+  }
+  
+  #add-familiar:hover {
+    background-color: rgba(80, 227, 194, 0.2);
+  }
+  
+  button[type="submit"] {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #357abd;
+  }
+  
+  button[type="reset"] {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    margin-left: 1rem;
+  }
+  
+  button[type="reset"]:hover {
+    background-color: var(--color-input-bg);
+  }
+  
+  /* Helper text */
+  .helper-text {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+  
+  /* Validación */
+  input:invalid,
+  select:invalid {
+    border-color: var(--color-error);
+  }
+  
+  input:invalid:focus,
+  select:invalid:focus {
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #studentRegistrationForm {
+      padding: 1rem;
+    }
+    
+    .form-section {
+      padding: 1rem;
+    }
+    
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .form-actions button {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

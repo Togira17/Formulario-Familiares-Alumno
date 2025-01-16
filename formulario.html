@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Registro de Estudiante</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form id="studentRegistrationForm" novalidate>
+        <!-- Sección 1: Datos del Alumno -->
+        <section class="form-section">
+            <h2>1. Datos del Alumno</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="apellidos">Apellidos *</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nif">NIF *</label>
+                <input type="text" id="nif" name="nif" pattern="^[0-9]{8}[A-Z]$" required>
+                <span class="helper-text">Formato: 8 dígitos y 1 letra mayúscula</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="lenguaMaterna">Lengua Materna *</label>
+                <select id="lenguaMaterna" name="lenguaMaterna" required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="idiomasConocidos">Idiomas Conocidos *</label>
+                <select id="idiomasConocidos" name="idiomasConocidos" multiple required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+        </section>
+
+        <!-- Sección 2: Familiares Asociados -->
+        <section class="form-section">
+            <h2>2. Familiares Asociados</h2>
+            <div id="familiares-container">
+                <div class="familiar-entry">
+                    <div class="form-group">
+                        <label for="familiar-nombre-1">Nombre *</label>
+                        <input type="text" id="familiar-nombre-1" name="familiar-nombre[]" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-apellidos-1">Apellidos *</label>
+                        <input type="text" id="familiar-apellidos-1" name="familiar-apellidos[]" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-nif-1">NIF *</label>
+                        <input type="text" id="familiar-nif-1" name="familiar-nif[]" pattern="^[0-9]{8}[A-Z]$" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-profesion-1">Profesión</label>
+                        <select id="familiar-profesion-1" name="familiar-profesion[]">
+                            <!-- Se cargará desde JSON -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-ciudad-1">Ciudad de Nacimiento *</label>
+                        <select id="familiar-ciudad-1" name="familiar-ciudad[]" required>
+                            <!-- Se cargará desde JSON -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-lengua-1">Lengua Materna</label>
+                        <select id="familiar-lengua-1" name="familiar-lengua[]">
+                            <!-- Se cargará desde JSON -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="familiar-idiomas-1">Idiomas Conocidos</label>
+                        <select id="familiar-idiomas-1" name="familiar-idiomas[]" multiple>
+                            <!-- Se cargará desde JSON -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="add-familiar">Añadir Familiar</button>
+        </section>
+
+        <!-- Sección 3: Dirección Actual -->
+        <section class="form-section">
+            <h2>3. Dirección Actual</h2>
+            <div class="form-group">
+                <label for="pais">País *</label>
+                <select id="pais" name="pais" required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="ciudad">Ciudad *</label>
+                <select id="ciudad" name="ciudad" required disabled>
+                    <!-- Se cargará desde JSON basado en país -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="poblacion">Población *</label>
+                <select id="poblacion" name="poblacion" required disabled>
+                    <!-- Se cargará desde JSON basado en ciudad -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="direccion">Dirección Completa *</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="codigoPostal">Código Postal *</label>
+                <input type="text" id="codigoPostal" name="codigoPostal" pattern="^[0-9]{5}$" required>
+                <span class="helper-text">5 dígitos numéricos</span>
+            </div>
+        </section>
+
+        <!-- Sección 4: Datos Académicos -->
+        <section class="form-section">
+            <h2>4. Datos Académicos</h2>
+            <div class="form-group">
+                <label for="colegioProcedencia">Colegio de Procedencia *</label>
+                <input type="text" id="colegioProcedencia" name="colegioProcedencia" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nivelEstudios">Nivel de Estudios Alcanzado *</label>
+                <select id="nivelEstudios" name="nivelEstudios" required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="idiomasEstudiados">Idiomas Estudiados *</label>
+                <select id="idiomasEstudiados" name="idiomasEstudiados" multiple required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="nivelSolicitado">Nivel de Estudio Solicitado *</label>
+                <select id="nivelSolicitado" name="nivelSolicitado" required>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+        </section>
+
+        <!-- Sección 5: Información Médica -->
+        <section class="form-section">
+            <h2>5. Información Médica</h2>
+            <div class="form-group">
+                <label for="alergias">Alergias</label>
+                <select id="alergias" name="alergias" multiple>
+                    <!-- Se cargará desde JSON -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="medicacion">Medicación Actual</label>
+                <textarea id="medicacion" name="medicacion"></textarea>
+            </div>
+        </section>
+
+        <div class="form-actions">
+            <button type="submit">Enviar Formulario</button>
+            <button type="reset">Limpiar Formulario</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -182,8 +182,8 @@
         </div>
     </form>
 
-    <script src="script.js"></script>
     <script src="alumno.js"></script>
+    <script src="script.js"></script>
 
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -195,40 +195,5 @@
             <button id="confirmar" class="modal-button">Confirmar</button>
         </div>
     </div>
-
-    <script>
-        document.getElementById('studentRegistrationForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Evitar el envío por defecto
-
-            // Recolectar datos del formulario
-            const formData = new FormData(event.target);
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = ''; // Limpiar contenido previo
-
-            // Mostrar datos en el modal
-            formData.forEach((value, key) => {
-                const dataItem = document.createElement('p');
-                dataItem.textContent = `${key}: ${value}`;
-                modalBody.appendChild(dataItem);
-            });
-
-            // Mostrar el modal
-            const modal = document.getElementById('modal');
-            modal.style.display = 'block';
-
-            // Manejo del cierre del modal
-            document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
-            window.onclick = (event) => {
-                if (event.target === modal) modal.style.display = 'none';
-            };
-
-            // Botón confirmar (opcional)
-            document.getElementById('confirmar').onclick = () => {
-                alert('Formulario confirmado.');
-                modal.style.display = 'none';
-            };
-        });
-    </script>
-
 </body>
 </html>

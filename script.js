@@ -168,6 +168,7 @@ function inicializarValidaciones() {
                 console.log('Alumno creado exitosamente:', alumno);
                 // Aquí puedes enviar los datos al servidor
             } catch (error) {
+                console.error('Error al crear alumno:', error);
                 mostrarError(error.message);
             }
         }
@@ -193,14 +194,160 @@ function mostrarError(mensaje) {
     alert(mensaje); // Esto debería mejorarse con una UI más amigable
 }
 
-// Función para recopilar datos del formulario
 function recopilarDatosFormulario() {
-    // Implementar recopilación de datos
-    const formData = {
-        // ... recopilar todos los campos del formulario
+    // Datos personales del alumno
+    const datosPersonales = {
+        nombre: document.getElementById('nombre').value,
+        apellidos: document.getElementById('apellidos').value,
+        nif: document.getElementById('nif').value,
+        lenguaMaterna: document.getElementById('lenguaMaterna').value,
+        idiomasConocidos: Array.from(document.getElementById('idiomasConocidos').selectedOptions).map(option => option.value)
     };
-    return formData;
-}
 
+    // Recopilar datos de familiares
+    const familiaresEntries = document.querySelectorAll('.familiar-entry');
+    const familiares = Array.from(familiaresEntries).map(familiar => {
+        const index = familiar.querySelector('[id^="familiar-nombre-"]').id.split('-').pop();
+        return {
+            nombre: document.getElementById(`familiar-nombre-${index}`).value,
+            apellidos: document.getElementById(`familiar-apellidos-${index}`).value,
+            nif: document.getElementById(`familiar-nif-${index}`).value,
+            profesion: document.getElementById(`familiar-profesion-${index}`).value,
+            ciudadNacimiento: document.getElementById(`familiar-ciudad-${index}`).value,
+            lenguaMaterna: document.getElementById(`familiar-lengua-${index}`).value,
+            idiomasConocidos: Array.from(document.getElementById(`familiar-idiomas-${index}`).selectedOptions).map(option => option.value)
+        };
+    });
+
+    // Datos de dirección
+    const direccion = {
+        pais: document.getElementById('pais').value,
+        ciudad: document.getElementById('ciudad').value,
+        poblacion: document.getElementById('poblacion').value,
+        direccionCompleta: document.getElementById('direccion').value,
+        codigoPostal: document.getElementById('codigoPostal').value
+    };
+
+    // Datos académicos
+    const datosAcademicos = {
+        colegioProcedencia: document.getElementById('colegioProcedencia').value,
+        nivelEstudios: document.getElementById('nivelEstudios').value,
+        idiomasEstudiados: Array.from(document.getElementById('idiomasEstudiados').selectedOptions).map(option => option.value),
+        nivelSolicitado: document.getElementById('nivelSolicitado').value
+    };
+
+    // Información médica (opcional)
+    const informacionMedica = {
+        alergias: Array.from(document.getElementById('alergias').selectedOptions).map(option => option.value),
+        medicacion: document.getElementById('medicacion').value
+    };
+
+    // Convertir a formato legible para mostrar en modal
+    const datosParaMostrar = {
+        // Datos personales
+        "Nombre": datosPersonales.nombre,
+        "Apellidos": datosPersonales.apellidos,
+        "NIF": datosPersonales.nif,
+        "Lengua Materna": datosPersonales.lenguaMaterna,
+        "Idiomas Conocidos": datosPersonales.idiomasConocidos.join(", "),
+
+        // Datos del familiar
+        "Familiar - Nombre": familiares[0].nombre,
+        "Familiar - Apellidos": familiares[0].apellidos,
+        "Familiar - NIF": familiares[0].nif,
+        "Familiar - Profesión": familiares[0].profesion,
+        "Familiar - Ciudad de Nacimiento": familiares[0].ciudadNacimiento,
+        "Familiar - Lengua Materna": familiares[0].lenguaMaterna,
+        "Familiar - Idiomas Conocidos": familiares[0].idiomasConocidos.join(", "),
+
+        // Dirección
+        "País": direccion.pais,
+        "Ciudad": direccion.ciudad,
+        "Población": direccion.poblacion,
+        "Dirección": direccion.direccionCompleta,
+        "Código Postal": direccion.codigoPostal,
+
+        // Datos académicos
+        "Colegio de Procedencia": datosAcademicos.colegioProcedencia,
+        "Nivel de Estudios": datosAcademicos.nivelEstudios,
+        "Idiomas Estudiados": datosAcademicos.idiomasEstudiados.join(", "),
+        "Nivel Solicitado": datosAcademicos.nivelSolicitado,
+
+        // Información médica
+        "Alergias": informacionMedica.alergias.join(", ") || "Ninguna",
+        "Medicación": informacionMedica.medicacion || "Ninguna"
+    };
+
+    // Mostrar los datos en el modal
+    mostrarDatosEnModal(datosParaMostrar);
+    
+    // Devolver los datos estructurados para el objeto Alumno
+    return {
+        ...datosPersonales,
+        familiares,
+        direccion,
+        datosAcademicos,
+        informacionMedica: informacionMedica.alergias.length > 0 || informacionMedica.medicacion ? informacionMedica : null
+    };
+}
+// Nueva función para mostrar los datos en el modal
+function mostrarDatosEnModal(datos) {
+    let contenidoModal = '';
+    for (const [clave, valor] of Object.entries(datos)) {
+        contenidoModal += `<div><strong>${clave}:</strong> ${valor}</div>`;
+    }
+    
+    // Crear o actualizar el modal
+    let modal = document.getElementById('modal-datos');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'modal-datos';
+        modal.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+        `;
+        
+        // Añadir botón de cerrar
+        const closeButton = document.createElement('button');
+        closeButton.textContent = '×';
+        closeButton.style.cssText = `
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+            background: none;
+            font-size: 20px;
+            cursor: pointer;
+        `;
+        closeButton.onclick = () => modal.remove();
+        modal.appendChild(closeButton);
+    }
+
+    // Añadir título
+    const titulo = document.createElement('h2');
+    titulo.textContent = 'Datos del Formulario';
+    titulo.style.marginBottom = '20px';
+    
+    // Contenedor para los datos
+    const contenedor = document.createElement('div');
+    contenedor.style.cssText = `
+        display: grid;
+        gap: 10px;
+    `;
+    contenedor.innerHTML = contenidoModal;
+    
+    modal.appendChild(titulo);
+    modal.appendChild(contenedor);
+    document.body.appendChild(modal);
+}
 // Inicializar todo al cargar la página
 window.addEventListener('DOMContentLoaded', cargarDatos);

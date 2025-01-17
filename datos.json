@@ -2,31 +2,39 @@
     "lenguasMaternas": ["Español", "Inglés", "Francés", "Alemán", "Italiano", "Chino", "Árabe", "Ruso"],
     "idiomasConocidos": ["Español", "Inglés", "Francés", "Alemán", "Italiano", "Chino", "Árabe", "Ruso", "Portugués", "Japonés"],
     "profesiones": ["Profesor", "Ingeniero", "Médico", "Abogado", "Comerciante", "Artista", "Estudiante", "Otro"],
-    "ciudadesDeNacimiento": ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "Málaga", "Granada", "Zaragoza"],
+    "ciudadesDeNacimiento": 
+         ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "Málaga", "Granada", "Zaragoza", "Murcia", "Alicante",
+        "París", "Lyon", "Marsella", "Toulouse", "Niza", "Burdeos", "Lille", "Nantes",
+        "Roma", "Milán", "Nápoles", "Turín", "Palermo", "Génova", "Bolonia", "Florencia",
+        "Londres", "Manchester", "Birmingham", "Liverpool", "Glasgow", "Edimburgo", "Bristol", "Leeds",
+        "Berlín", "Múnich", "Hamburgo", "Frankfurt", "Colonia", "Stuttgart", "Düsseldorf", "Leipzig",
+        "Lisboa", "Oporto", "Coímbra", "Braga", "Faro", "Aveiro", "Funchal", "Setúbal",
+       "Nueva York", "Los Ángeles", "Chicago", "Houston", "Miami", "Boston", "San Francisco", "Seattle"]
+    ,
     "paises": {
-      "España": {
-        "ciudades": {
-          "Madrid": ["Centro", "Salamanca", "Chamartín"],
-          "Barcelona": ["Gràcia", "Eixample", "Sants-Montjuïc"],
-          "Sevilla": ["Triana", "Nervión", "Macarena"],
-          "Valencia": ["Ciutat Vella", "El Carmen", "Ruzafa"]
+        "España": {
+            "ciudades": {
+                "Madrid": ["Centro", "Salamanca", "Chamartín"],
+                "Barcelona": ["Gràcia", "Eixample", "Sants-Montjuïc"],
+                "Sevilla": ["Triana", "Nervión", "Macarena"],
+                "Valencia": ["Ciutat Vella", "El Carmen", "Ruzafa"]
+            }
+        },
+        "Francia": {
+            "ciudades": {
+                "París": ["Le Marais", "Montmartre", "La Défense"],
+                "Lyon": ["Presqu'île", "Croix-Rousse", "Part-Dieu"]
+            }
+        },
+        "Italia": {
+            "ciudades": {
+                "Roma": ["Trastevere", "Testaccio", "Esquilino"],
+                "Milán": ["Brera", "Navigli", "Porta Romana"]
+            }
         }
-      },
-      "Francia": {
-        "ciudades": {
-          "París": ["Le Marais", "Montmartre", "La Défense"],
-          "Lyon": ["Presqu'île", "Croix-Rousse", "Part-Dieu"]
-        }
-      },
-      "Italia": {
-        "ciudades": {
-          "Roma": ["Trastevere", "Testaccio", "Esquilino"],
-          "Milán": ["Brera", "Navigli", "Porta Romana"]
-        }
-      }
     },
     "nivelesDeEstudio": ["Primaria", "Secundaria", "Bachillerato", "Universitario", "Posgrado", "Doctorado"],
     "alergias": ["Polen", "Lácteos", "Frutos secos", "Mariscos", "Gluten", "Medicamentos"],
     "nivelesDeEstudioSolicitados": ["Primaria", "Secundaria", "Bachillerato", "Universitario", "Posgrado", "Doctorado"]
-  }
+}
   

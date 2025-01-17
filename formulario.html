@@ -23,7 +23,7 @@
             
             <div class="form-group">
                 <label for="nif">NIF *</label>
-                <input type="text" id="nif" name="nif" pattern="^[0-9]{8}[A-Z]$" required>
+                <input type="text" id="nif" name="nif" pattern="^[0-9]{8}[A-Z]{1}$" required>
                 <span class="helper-text">Formato: 8 dígitos y 1 letra mayúscula</span>
             </div>
             
@@ -181,5 +181,54 @@
             <button type="reset">Limpiar Formulario</button>
         </div>
     </form>
+
+    <script src="script.js"></script>
+    <script src="alumno.js"></script>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Datos del Formulario</h2>
+            <div id="modal-body">
+                <!-- Aquí se mostrarán los datos -->
+            </div>
+            <button id="confirmar" class="modal-button">Confirmar</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('studentRegistrationForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evitar el envío por defecto
+
+            // Recolectar datos del formulario
+            const formData = new FormData(event.target);
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = ''; // Limpiar contenido previo
+
+            // Mostrar datos en el modal
+            formData.forEach((value, key) => {
+                const dataItem = document.createElement('p');
+                dataItem.textContent = `${key}: ${value}`;
+                modalBody.appendChild(dataItem);
+            });
+
+            // Mostrar el modal
+            const modal = document.getElementById('modal');
+            modal.style.display = 'block';
+
+            // Manejo del cierre del modal
+            document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
+            window.onclick = (event) => {
+                if (event.target === modal) modal.style.display = 'none';
+            };
+
+            // Botón confirmar (opcional)
+            document.getElementById('confirmar').onclick = () => {
+                alert('Formulario confirmado.');
+                modal.style.display = 'none';
+            };
+        });
+    </script>
+
 </body>
 </html>

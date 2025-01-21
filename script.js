@@ -145,11 +145,52 @@ function crearNuevoFamiliar(index, data) {
     const div = document.createElement('div');
     div.className = 'familiar-entry';
     div.innerHTML = `
-        <!-- Template HTML para nuevo familiar -->
+        <div class="form-group">
+            <label for="familiar-nombre-${index}">Nombre *</label>
+            <input type="text" id="familiar-nombre-${index}" name="familiar-nombre[]" required value="${data.nombre || ''}">
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-apellidos-${index}">Apellidos *</label>
+            <input type="text" id="familiar-apellidos-${index}" name="familiar-apellidos[]" required value="${data.apellidos || ''}">
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-nif-${index}">NIF *</label>
+            <input type="text" id="familiar-nif-${index}" name="familiar-nif[]" pattern="^[0-9]{8}[A-Z]$" required value="${data.nif || ''}">
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-profesion-${index}">Profesión</label>
+            <select id="familiar-profesion-${index}" name="familiar-profesion[]">
+                ${(data.profesiones || []).map(profesion => `<option value="${profesion}">${profesion}</option>`).join('')}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-ciudad-${index}">Ciudad de Nacimiento *</label>
+            <select id="familiar-ciudad-${index}" name="familiar-ciudad[]" required>
+                ${(data.ciudades || []).map(ciudad => `<option value="${ciudad}">${ciudad}</option>`).join('')}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-lengua-${index}">Lengua Materna</label>
+            <select id="familiar-lengua-${index}" name="familiar-lengua[]">
+                ${(data.lenguas || []).map(lengua => `<option value="${lengua}">${lengua}</option>`).join('')}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="familiar-idiomas-${index}">Idiomas Conocidos</label>
+            <select id="familiar-idiomas-${index}" name="familiar-idiomas[]" multiple>
+                ${(data.idiomas || []).map(idioma => `<option value="${idioma}">${idioma}</option>`).join('')}
+            </select>
+        </div>
+
         <button type="button" class="remove-familiar" onclick="this.parentElement.remove()">
             Eliminar Familiar
         </button>
-        <!-- ... resto del HTML para el familiar ... -->
     `;
     return div;
 }
@@ -183,15 +224,31 @@ function validarFormulario() {
         mostrarError('Debe añadir al menos un familiar');
         return false;
     }
-    
+    const nifFamiliarInputs = document.querySelectorAll('[name="familiar-nif[]"]');
+    for (const input of nifFamiliarInputs) {
+        const nifRegex = /^[0-9]{8}[A-Z]$/;
+        if (!nifRegex.test(input.value)) {
+            alert('El NIF debe tener 8 dígitos y una letra mayúscula');
+            event.preventDefault(); // Evita que el formulario se envíe
+            return;
+        }
+    }
+    const nifInputs = document.querySelectorAll('[name="nif[]"]');
+    for (const input of nifInputs) {
+        const nifRegex = /^[0-9]{8}[A-Z]$/;
+        if (!nifRegex.test(input.value)) {
+            alert('El NIF debe tener 8 dígitos y una letra mayúscula');
+            event.preventDefault(); // Evita que el formulario se envíe
+            return;
+        }
+    }
     // Más validaciones...
     return true;
 }
 
 // Función para mostrar errores
 function mostrarError(mensaje) {
-    // Implementar visualización de errores
-    alert(mensaje); // Esto debería mejorarse con una UI más amigable
+
 }
 
 function recopilarDatosFormulario() {

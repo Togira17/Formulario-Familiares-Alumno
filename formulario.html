@@ -23,8 +23,8 @@
             
             <div class="form-group">
                 <label for="nif">NIF *</label>
-                <input type="text" id="nif" name="nif" pattern="^[0-9]{8}[A-Z]{1}$" required>
-                <span class="helper-text">Formato: 8 dígitos y 1 letra mayúscula</span>
+                <input type="text" id="nif" name="nif" pattern="^[0-9]{8}[A-Z]{1}$" required  title="Debe ser un NIF válido: 8 dígitos y 1 letra">
+                <span class="helper-text">8 dígitos y 1 letra mayúscula</span>
             </div>
             
             <div class="form-group">
@@ -59,7 +59,8 @@
                     
                     <div class="form-group">
                         <label for="familiar-nif-1">NIF *</label>
-                        <input type="text" id="familiar-nif-1" name="familiar-nif[]" pattern="^[0-9]{8}[A-Z]$" required>
+                        <input type="text" id="familiar-nif-1" name="familiar-nif[]" pattern="^[0-9]{8}[A-Z]$" required  title="Debe ser un NIF válido: 8 dígitos y 1 letra">
+                        <span class="helper-text">8 digitos y 1 letra</span>
                     </div>
                     
                     <div class="form-group">

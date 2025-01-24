@@ -140,60 +140,58 @@ class AlumnoBuilder {
 }
 
 // Creación del Alumno utilizando el AlumnoBuilder
-
 const builder = new AlumnoBuilder();
 
-// Establecer los datos personales
-builder.setDatosPersonales(
-    formData.nombre,
-    formData.apellidos,
-    formData.nif,
-    formData.lenguaMaterna,
-    formData.idiomasConocidos
-);
-
-// Añadir los familiares
-formData.familiares.forEach(familiar => {
-    builder.addFamiliar(new Familiar(
-        familiar.nombre,
-        familiar.apellidos,
-        familiar.nif,
-        familiar.profesion,
-        familiar.ciudadNacimiento,
-        familiar.lenguaMaterna,
-        familiar.idiomasConocidos
-    ));
-});
-
-// Establecer la dirección
-builder.setDireccion(new Direccion(
-    formData.direccion.pais,
-    formData.direccion.ciudad,
-    formData.direccion.poblacion,
-    formData.direccion.direccionCompleta,
-    formData.direccion.codigoPostal
-));
-
-// Establecer los datos académicos
-builder.setDatosAcademicos(new DatosAcademicos(
-    formData.datosAcademicos.colegioProcedencia,
-    formData.datosAcademicos.nivelEstudios,
-    formData.datosAcademicos.idiomasEstudiados,
-    formData.datosAcademicos.nivelSolicitado
-));
-
-// Establecer la información médica (si existe)
-if (formData.informacionMedica) {
-    builder.setInformacionMedica(new InformacionMedica(
-        formData.informacionMedica.alergias,
-        formData.informacionMedica.medicacion
-    ));
-}
-
-// Validar y construir el alumno
 try {
+    // Establecer los datos personales
+    builder.setDatosPersonales(
+        formData.nombre,
+        formData.apellidos,
+        formData.nif,
+        formData.lenguaMaterna,
+        formData.idiomasConocidos
+    );
+
+    // Añadir los familiares
+    formData.familiares.forEach(familiar => {
+        builder.addFamiliar(new Familiar(
+            familiar.nombre,
+            familiar.apellidos,
+            familiar.nif,
+            familiar.profesion,
+            familiar.ciudadNacimiento,
+            familiar.lenguaMaterna,
+            familiar.idiomasConocidos
+        ));
+    });
+
+    // Establecer la dirección
+    builder.setDireccion(new Direccion(
+        formData.direccion.pais,
+        formData.direccion.ciudad,
+        formData.direccion.poblacion,
+        formData.direccion.direccionCompleta,
+        formData.direccion.codigoPostal
+    ));
+
+    // Establecer los datos académicos
+    builder.setDatosAcademicos(new DatosAcademicos(
+        formData.datosAcademicos.colegioProcedencia,
+        formData.datosAcademicos.nivelEstudios,
+        formData.datosAcademicos.idiomasEstudiados,
+        formData.datosAcademicos.nivelSolicitado
+    ));
+
+    // Establecer la información médica (si existe)
+    if (formData.informacionMedica) {
+        builder.setInformacionMedica(new InformacionMedica(
+            formData.informacionMedica.alergias,
+            formData.informacionMedica.medicacion
+        ));
+    }
+
+    // Validar y construir el alumno
     const alumno = builder.build();
     console.log(alumno);
-} catch (error) {
-    console.error("Error al construir el alumno:", error.message);
-}
+
+} catch (error) {}

@@ -29,7 +29,7 @@ async function cargarDatos() {
 function inicializarSelectores(data) {
     const selectores = {
         'lenguaMaterna': { data: data.lenguasMaternas, multiple: false },
-        'familiar-idioma-1': { data: data.lenguasMaternas, multiple: false },
+        'familiar-idiomas-1': { data: data.lenguasMaternas, multiple: false },
         'idiomasConocidos': { data: data.idiomasConocidos, multiple: true },
         'nivelEstudios': { data: data.nivelesDeEstudio, multiple: false },
         'familiar-profesion-1': { data: data.profesiones, multiple: false },

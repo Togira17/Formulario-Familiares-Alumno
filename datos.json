@@ -3,7 +3,7 @@
     "idiomasConocidos": ["Español", "Inglés", "Francés", "Alemán", "Italiano", "Chino", "Árabe", "Ruso", "Portugués", "Japonés"],
     "profesiones": ["Profesor", "Ingeniero", "Médico", "Abogado", "Comerciante", "Artista", "Estudiante", "Otro"],
     "ciudadesDeNacimiento": 
-         ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "Málaga", "Granada", "Zaragoza", "Murcia", "Alicante",
+        ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "Málaga", "Granada", "Zaragoza", "Murcia", "Alicante",
         "París", "Lyon", "Marsella", "Toulouse", "Niza", "Burdeos", "Lille", "Nantes",
         "Roma", "Milán", "Nápoles", "Turín", "Palermo", "Génova", "Bolonia", "Florencia",
         "Londres", "Manchester", "Birmingham", "Liverpool", "Glasgow", "Edimburgo", "Bristol", "Leeds",
